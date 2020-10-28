@@ -1,0 +1,92 @@
+<!doctype html>
+<!--<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml">-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:margin-left="http://www.w3.org/1999/xhtml">
+<head th:replace="layout :: common_head(~{::title},~{},~{})">
+    <title>网鲸企业员工管系统</title>
+</head>
+<body class=" theme-blue">
+
+<!-- Demo page code -->
+
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+<div th:insert="~{home::top-menu}"></div>
+
+
+<div th:insert="~{home::leaf-menu}"></div>
+
+
+<div class="content">
+    <div class="header">
+
+        <h1 class="page-title">用户列表</h1>
+        <ul class="breadcrumb">
+            <li><a >登录页面</a> </li>
+            <li class="active"><a >部门管理</a></li>
+            <li class="active"><a href="/deptlist">部门列表</a></li>
+            <li class="active"><a>添加部门</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content" style="align-content: center" >
+        <form id="form1" name="form1" onsubmit="return false" action="##" method="post" class="bs-example bs-example-form" role="form">
+            <div class="input-group">
+                <span class="input-group-addon" style=" width:80px;">部门名称</span>
+                <input type="text"  id="deptname" name="deptname" class='form-control' placeholder='部门名称'/>
+            </div><br>
+            <div class="input-group">
+                <span class="input-group-addon" style=" width:80px;">主管名称</span>
+                <input type="text" id="mail" name="mail" class='form-control' placeholder='邮箱'/>
+            </div><br>
+            <div class="input-group">
+                <span class="input-group-addon" style=" width:80px;">密码</span>
+                <input type="password" id="rpassword" name="password" class='form-control' placeholder='密码'/>
+            </div><br>
+            <div class="input-group">
+                <span class="input-group-addon" style=" width:80px;">手机号码</span>
+                <input type="text" id="rphone" name="phone" class='form-control' placeholder='手机号码'/>
+            </div><br>
+            <button type="button" class="submit btn-primary" id="regist" style=" width:80px; margin-left: 20px" onclick="asd()">添 加</button>
+            <button type="reset" class="button-reset btn-warning" id="reset" style=" width:80px; margin-left: 50px">重 置</button>
+        </form>
+    </div>
+</div>
+
+
+<script type="application/javascript">
+    asd=function(){
+        var str = {
+            "username":$('#ruserame').val(),
+            "password": $('#rpassword').val(),
+            "mail": $('#mail').val(),
+            "phone": $('#rphone').val()
+        };
+        if ($('#ruserame').val().length==""||$('#rpassword').val().length==""||$('#mail').val().length==""||$('#rphone').val().length==""){
+            alert("信息不能为空")
+        }
+        $.ajax({
+            url: "submit",
+            type: "post",
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",//x-www-form-urlencoded
+            data: JSON.stringify(str),
+            success: function (data) {
+                if (data.msg == "注册成功") {
+                    var id = $(data.code);
+                    alert("添加成功");
+                    window.setTimeout(1000);
+                    location.href=""
+                } else
+                    alert("用户已存在")
+            }
+        });
+    }
+</script>
+
+
+</body></html>

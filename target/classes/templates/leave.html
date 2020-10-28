@@ -1,0 +1,157 @@
+<!doctype html>
+<!--<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml">-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: common_head(~{::title},~{},~{::script})">
+    <title>网鲸企业员工管系统</title>
+    <script src="js/leave.js" type="text/javascript" th:src="@{/js/leave.js}"></script>
+</head>
+<body class=" theme-blue" onload="">
+<!-- Demo page code -->
+<script type="text/javascript">
+    $(function () {
+        var match = document.cookie.match(new RegExp('color=([^;]+)'));
+        if (match) var color = match[1];
+        if (color) {
+            $('body').removeClass(function (index, css) {
+                return (css.match(/\btheme-\S+/g) || []).join(' ')
+            })
+            $('body').addClass('theme-' + color);
+        }
+        $('[data-popover="true"]').popover({html: true});
+
+    });
+</script>
+<style type="text/css">
+    #line-chart {
+        height: 300px;
+        width: 800px;
+        margin: 0px auto;
+        margin-top: 1em;
+    }
+
+    .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover {
+        color: #fff;
+    }
+</style>
+
+<script type="text/javascript">
+    $(function () {
+        var uls = $('.sidebar-nav > ul > *').clone();
+        uls.addClass('visible-xs');
+        $('#main-menu').append(uls.clone());
+    });
+</script>
+
+
+<div th:insert="~{home::top-menu}"></div>
+
+<div th:insert="~{home::leaf-menu}"></div>
+
+
+<div class="content">
+    <div class="header">
+        <h1 class="page-title">我 的</h1>
+        <ul class="breadcrumb">
+            <li><a href="/login">登录页面</a></li>
+            <li class="active">请假</li>
+        </ul>
+    </div>
+
+
+    <div >
+        <button id="btnform" onclick="toform()" type="button" class="btn btn-w-m btn-danger">我要请假</button>
+        <button id="btntable" onclick="totable()" type="button" class="btn btn-w-m btn-default">请假记录</button>
+    </div>
+
+    <div id="leaveformdiv" >
+        <form id="leaveform" class="form-horizontal m-t">
+            <div class="form-group">
+                <label class="col-sm-1 control-label">类型：</label>
+                <div class="col-sm-3">
+                    <label class="radio-inline">
+                        <input checked="true" value="事假" id="leavetype" name="type" type="radio"/>事假
+                    </label>
+                    <label class="radio-inline">
+                        <input value="病假"  id="leavetype" name="type" type="radio"/>病假
+                    </label>
+                    <label class="radio-inline">
+                        <input value="其他" id="leavetype" name="type" type="radio"/>其他
+                    </label>
+                </div>
+                <br/> <br/>
+
+                <label class="col-sm-1 control-label">时间：</label>
+                <div class="col-sm-2">
+                    <input name="starttime" placeholder="开始日期" type="datetime-local"
+                           class="form-control layer-date" id="start"/>
+                    <input
+                            name="endtime" placeholder="结束日期" type="datetime-local"
+                            class="form-control layer-date" id="end"/>
+                </div>
+                <br/> <br/> <br/> <br/> <br/>
+                <label class="col-sm-1 control-label">事由：</label>
+                <div class="col-sm-5">
+					<textarea id="reason" name="reason" class="form-control" placeholder="请输入事由"></textarea>
+                </div>
+            </div>
+        </form>
+        <div class="col-sm-7 control-label" style="text-align: center;">
+            <button class="btn btn-w-m btn-success" type="button" onclick="submitleave()">提交</button>
+        </div>
+    </div>
+    <div id="leavetable"  class="wrapper wrapper-content  animated fadeInRight"  style="display: none">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="jqGrid_wrapper">
+                    <table id="table_list_2">
+
+                        <div class="panel panel-default">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>单号</th>
+                                    <th>工号</th>
+                                    <th>姓名</th>
+                                    <th>类型</th>
+                                    <th>事由</th>
+                                    <th>开始时间</th>
+                                    <th>结束时间</th>
+                                    <th>审批情况</th>
+                                    <th style="width: 2.5em;"></th>
+                                </tr>
+                                </thead>
+                                <tbody id="dept">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5" id="page_info_area">
+                                <div class="dataTables_info" id="dataTableExample_info" style="margin-left: 20px">
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="dataTables_paginate paging_simple_numbers" id="dataTableExample_paginate"
+                                     style="line-height: 32.4px">
+                                </div>
+                            </div>
+                        </div>
+                    </table>
+                    <div id="pager_list_2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript">
+    $("[rel=tooltip]").tooltip();
+    $(function () {
+        $('.demo-cancel-click').click(function () {
+            return false;
+        });
+    });
+</script>
+
+</body>
+</html>

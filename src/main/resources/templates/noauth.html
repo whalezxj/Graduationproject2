@@ -1,0 +1,37 @@
+<!doctype html>
+<!--<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml">-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: common_head(~{::title},~{},~{})">
+    <title>网鲸企业员工管系统</title>
+</head>
+<body class=" theme-blue">
+
+<!-- Demo page code -->
+
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+<div th:insert="~{home::top-menu}"></div>
+
+
+<div th:insert="~{home::leaf-menu}"></div>
+
+
+<div class="content">
+
+
+
+    <h1>您没有权限访问此页面</h1>
+
+    <p >
+        <a href="/home">跳转首页</a>
+    </p>
+
+</div>
+</body>
+</html>
+

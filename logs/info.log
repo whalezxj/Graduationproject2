@@ -1,0 +1,55 @@
+2020-09-04 18:08:24,110 INFO  c.example.demo.DemoApplication[55]: Starting DemoApplication on DESKTOP-D6GASDF with PID 15304 (E:\DDesktop\demo\target\classes started by 11578 in E:\DDesktop\demo)
+2020-09-04 18:08:24,113 INFO  c.example.demo.DemoApplication[651]: No active profile set, falling back to default profiles: default
+2020-09-04 18:08:24,249 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor[225]: Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-09-04 18:08:24,250 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor[225]: For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-09-04 18:08:25,728 INFO  o.s.b.w.e.t.TomcatWebServer[108]: Tomcat initialized with port(s): 8081 (http)
+2020-09-04 18:08:25,737 INFO  o.a.c.http11.Http11NioProtocol[173]: Initializing ProtocolHandler ["http-nio-8081"]
+2020-09-04 18:08:25,737 INFO  o.a.c.core.StandardService[173]: Starting service [Tomcat]
+2020-09-04 18:08:25,738 INFO  o.a.c.core.StandardEngine[173]: Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-09-04 18:08:25,823 INFO  o.a.c.c.C.[.[localhost].[/][173]: Initializing Spring embedded WebApplicationContext
+2020-09-04 18:08:25,823 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext[285]: Root WebApplicationContext: initialization completed in 1573 ms
+2020-09-04 18:08:26,017 INFO  c.z.hikari.HikariDataSource[110]: HikariPool-1 - Starting...
+2020-09-04 18:08:26,482 INFO  c.z.hikari.HikariDataSource[123]: HikariPool-1 - Start completed.
+2020-09-04 18:08:27,077 INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping[69]: Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-09-04 18:08:27,176 INFO  o.s.s.c.ThreadPoolTaskExecutor[181]: Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-04 18:08:27,220 INFO  o.s.b.d.a.OptionalLiveReloadServer[58]: LiveReload server is running on port 35729
+2020-09-04 18:08:27,250 INFO  o.s.b.a.w.s.WelcomePageHandlerMapping[58]: Adding welcome page template: index
+2020-09-04 18:08:27,425 INFO  o.a.c.http11.Http11NioProtocol[173]: Starting ProtocolHandler ["http-nio-8081"]
+2020-09-04 18:08:27,451 INFO  o.s.b.w.e.t.TomcatWebServer[220]: Tomcat started on port(s): 8081 (http) with context path ''
+2020-09-04 18:08:27,453 INFO  s.d.s.w.p.DocumentationPluginsBootstrapper[160]: Context refreshed
+2020-09-04 18:08:27,474 INFO  s.d.s.w.p.DocumentationPluginsBootstrapper[163]: Found 1 custom documentation plugin(s)
+2020-09-04 18:08:27,509 INFO  s.d.s.w.s.ApiListingReferenceScanner[41]: Scanning for api listing references
+2020-09-04 18:08:27,872 INFO  c.example.demo.DemoApplication[61]: Started DemoApplication in 4.255 seconds (JVM running for 5.966)
+2020-09-04 18:08:27,875 INFO  c.example.demo.DemoApplication[22]: springboot启动完成！
+2020-09-04 18:10:16,518 INFO  o.s.s.c.ThreadPoolTaskExecutor[218]: Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-04 18:10:16,520 INFO  c.z.hikari.HikariDataSource[350]: HikariPool-1 - Shutdown initiated...
+2020-09-04 18:10:16,524 INFO  c.z.hikari.HikariDataSource[352]: HikariPool-1 - Shutdown completed.
+2020-09-04 18:10:22,252 INFO  c.example.demo.DemoApplication[55]: Starting DemoApplication on DESKTOP-D6GASDF with PID 24944 (E:\DDesktop\demo\target\classes started by 11578 in E:\DDesktop\demo)
+2020-09-04 18:10:22,256 INFO  c.example.demo.DemoApplication[651]: No active profile set, falling back to default profiles: default
+2020-09-04 18:10:22,351 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor[225]: Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-09-04 18:10:22,351 INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor[225]: For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-09-04 18:10:23,825 INFO  o.s.b.w.e.t.TomcatWebServer[108]: Tomcat initialized with port(s): 8081 (http)
+2020-09-04 18:10:23,834 INFO  o.a.c.http11.Http11NioProtocol[173]: Initializing ProtocolHandler ["http-nio-8081"]
+2020-09-04 18:10:23,835 INFO  o.a.c.core.StandardService[173]: Starting service [Tomcat]
+2020-09-04 18:10:23,835 INFO  o.a.c.core.StandardEngine[173]: Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020-09-04 18:10:23,919 INFO  o.a.c.c.C.[.[localhost].[/][173]: Initializing Spring embedded WebApplicationContext
+2020-09-04 18:10:23,920 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext[285]: Root WebApplicationContext: initialization completed in 1568 ms
+2020-09-04 18:10:24,163 INFO  c.z.hikari.HikariDataSource[110]: HikariPool-1 - Starting...
+2020-09-04 18:10:24,746 INFO  c.z.hikari.HikariDataSource[123]: HikariPool-1 - Start completed.
+2020-09-04 18:10:25,319 INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping[69]: Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-09-04 18:10:25,412 INFO  o.s.s.c.ThreadPoolTaskExecutor[181]: Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-04 18:10:25,453 INFO  o.s.b.d.a.OptionalLiveReloadServer[58]: LiveReload server is running on port 35729
+2020-09-04 18:10:25,486 INFO  o.s.b.a.w.s.WelcomePageHandlerMapping[58]: Adding welcome page template: index
+2020-09-04 18:10:25,662 INFO  o.a.c.http11.Http11NioProtocol[173]: Starting ProtocolHandler ["http-nio-8081"]
+2020-09-04 18:10:25,684 INFO  o.s.b.w.e.t.TomcatWebServer[220]: Tomcat started on port(s): 8081 (http) with context path ''
+2020-09-04 18:10:25,686 INFO  s.d.s.w.p.DocumentationPluginsBootstrapper[160]: Context refreshed
+2020-09-04 18:10:25,705 INFO  s.d.s.w.p.DocumentationPluginsBootstrapper[163]: Found 1 custom documentation plugin(s)
+2020-09-04 18:10:25,736 INFO  s.d.s.w.s.ApiListingReferenceScanner[41]: Scanning for api listing references
+2020-09-04 18:10:25,947 INFO  c.example.demo.DemoApplication[61]: Started DemoApplication in 4.116 seconds (JVM running for 5.557)
+2020-09-04 18:10:25,950 INFO  c.example.demo.DemoApplication[22]: springboot启动完成！
+2020-09-04 18:10:48,070 INFO  o.a.c.c.C.[.[localhost].[/][173]: Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-04 18:10:48,070 INFO  o.s.w.s.DispatcherServlet[525]: Initializing Servlet 'dispatcherServlet'
+2020-09-04 18:10:48,099 INFO  o.s.w.s.DispatcherServlet[547]: Completed initialization in 28 ms
+2020-09-04 18:11:29,080 INFO  o.s.s.c.ThreadPoolTaskExecutor[218]: Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-04 18:11:29,082 INFO  c.z.hikari.HikariDataSource[350]: HikariPool-1 - Shutdown initiated...
+2020-09-04 18:11:29,086 INFO  c.z.hikari.HikariDataSource[352]: HikariPool-1 - Shutdown completed.

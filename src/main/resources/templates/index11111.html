@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>爱及所爱</title>
+    <link rel="stylesheet" th:href="@{~/css/login.css}" type="text/css">
+    <!--href="../static/css/login.css"  th:href="@{/css/login.css}"-->
+    <script th:src="@{/js/jquery-3.5.1.js}"  type="text/javascript"></script>
+    <!--src="../static/js/jquery-3.5.1.js" th:src="@{/js/jquery-3.5.1.js}"-->
+</head>
+
+<body>
+<div class="content">
+    <div class="form sign-in">
+        <h2>欢迎回来</h2>
+        <!-- <form id="login" name="login" method="post" action="/user/login">
+             <label>
+                 <span>用户名</span>
+                 <input type="text" id="username" name="username"/>
+             </label>
+             <label>
+                 <span>密码</span>
+                 <input type="password" id="password" name="password"/>
+             </label>
+
+             &lt;!&ndash;<p class="forgot-pass"><a href="javascript:">忘记密码？</a></p>&ndash;&gt;
+
+             <button type="submit" class="submit">登 录</button>
+         </form>-->
+        <label>
+            <span>用户名</span>
+            <input type="text" id="username" name="username" />
+        </label>
+        <label>
+            <span>密码</span>
+            <input type="password" id="password" name="password" />
+        </label>
+        <button type="submit" class="button" id="login" name="login" th:id="login" onclick="lo()">登 录</button>
+    </div>
+    <div class="sub-cont">
+        <div class="img">
+            <div class="img__text m--up">
+                <h2>还未注册？</h2>
+                <p>立即注册，发现大量机会！</p>
+            </div>
+            <div class="img__text m--in">
+                <h2>已有帐号？</h2>
+                <p>有帐号就登录吧，好久不见了！</p>
+            </div>
+            <div class="img__btn">
+                <span class="m--up">注 册</span>
+                <span class="m--in">登 录</span>
+            </div>
+        </div>
+        <div class="form sign-up">
+            <h2>立即注册</h2>
+            <form id="form1" name="form1" onsubmit="return false" action="##" method="post">
+                <label>
+                    <span>用户名</span>
+                    <input type="text" id="rusername" name="username"/>
+                </label>
+                <label>
+                    <span>邮箱</span>
+                    <input type="text" id="mail" name="mail"/>
+                </label>
+                <label>
+                    <span>密码</span>
+                    <input type="password" id="rpassword" name="password"/>
+                </label>
+                <label>
+                    <span>手机号码</span>
+                    <input type="text" id="rphone" name="phone"/>
+                </label>
+                <button type="button" class="submit" id="regist" onclick="re()">注 册</button>
+            </form>
+           <!-- &lt;!&ndash;
+            <button type="button" class="fb-btn">使用 <span>facebook</span> 帐号注册</button>
+            &ndash;&gt;-->
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/login.js}"  type="text/javascript"></script>
+<!--src="../static/js/login.js" th:src="@{/js/login.js}" -->
+
+<script type="application/javascript">
+    function re() {
+        if ($('#rusername').val()==""||$('#rpassword').val()==""||$('#mail').val()==""||$('#rphone').val()==""){
+            window.setTimeout(1000);
+            alert("信息不能为空");
+            location.href = "";
+            return;
+        }
+        var str = {
+            "username": $('#rusername').val(),
+            "password": $('#rpassword').val(),
+            "mail": $('#mail').val(),
+            "phone": $('#rphone').val()
+        };
+        $.ajax({
+            url: "user/submit",
+            type: "post",
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",//x-www-form-urlencoded
+            data: JSON.stringify(str),
+            success: function (data) {
+                if (data.msg == "注册成功") {
+                    var id = $(data.code);
+                    alert("注册成功");
+                    window.setTimeout(1000);
+                    location.href = ""
+                } else
+                    alert("用户已存在")
+            }
+        });
+    }
+
+    function lo() {
+        var str = {
+            "username": $('#username').val(),
+            "password": $('#password').val()
+        };
+        $.ajax({
+            url: "user/login",
+            type: "post",
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",//x-www-form-urlencoded
+            data: JSON.stringify(str),
+            success: function (data) {
+                if (data.info == "用户不存在") {
+                    alert("用户不存在")
+                    window.location.href = "/login";
+                }
+                if (data.info == "密码错误") {
+                    alert("密码错误")
+                    window.location.href = "/login";
+                }
+                if (data.info == "登录成功") {
+                    alert("登录成功")
+                    window.location.href = "/home"
+                }
+            }
+        });
+    }
+</script>
+<div style="text-align:center;">
+</div>
+</body>
+
+</html>

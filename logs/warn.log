@@ -1,0 +1,10 @@
+2020-09-04 18:08:25,257 WARN  o.m.s.m.ClassPathMapperScanner[44]: Skipping MapperFactoryBean with name 'userMapper' and 'com.example.demo.mapper.UserMapper' mapperInterface. Bean already defined with the same name!
+2020-09-04 18:08:25,258 WARN  o.m.s.m.ClassPathMapperScanner[44]: No MyBatis mapper was found in '[com.example.demo.mapper]' package. Please check your configuration.
+2020-09-04 18:08:27,270 WARN  o.s.w.s.r.ResourceHttpRequestHandler[355]: Locations list is empty. No resources will be served unless a custom ResourceResolver is configured as an alternative to PathResourceResolver.
+2020-09-04 18:08:27,271 WARN  o.s.w.s.r.ResourceHttpRequestHandler[355]: Locations list is empty. No resources will be served unless a custom ResourceResolver is configured as an alternative to PathResourceResolver.
+2020-09-04 18:08:27,312 WARN  o.t.templatemode.TemplateMode[150]: [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2020-09-04 18:10:23,324 WARN  o.m.s.m.ClassPathMapperScanner[44]: Skipping MapperFactoryBean with name 'userMapper' and 'com.example.demo.mapper.UserMapper' mapperInterface. Bean already defined with the same name!
+2020-09-04 18:10:23,326 WARN  o.m.s.m.ClassPathMapperScanner[44]: No MyBatis mapper was found in '[com.example.demo.mapper]' package. Please check your configuration.
+2020-09-04 18:10:25,506 WARN  o.s.w.s.r.ResourceHttpRequestHandler[355]: Locations list is empty. No resources will be served unless a custom ResourceResolver is configured as an alternative to PathResourceResolver.
+2020-09-04 18:10:25,507 WARN  o.s.w.s.r.ResourceHttpRequestHandler[355]: Locations list is empty. No resources will be served unless a custom ResourceResolver is configured as an alternative to PathResourceResolver.
+2020-09-04 18:10:25,548 WARN  o.t.templatemode.TemplateMode[150]: [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.

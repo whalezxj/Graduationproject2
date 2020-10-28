@@ -1,0 +1,131 @@
+<!doctype html>
+<!--<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml">-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: common_head(~{::title},~{},~{})">
+    <title>关于我们</title>
+</head>
+<body class=" theme-blue">
+
+<!-- Demo page code -->
+
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+<div th:insert="~{home::top-menu}"></div>
+<!--<div class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="" href="index.html"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Whale</span></a></div>
+
+    <div class="navbar-collapse collapse" style="height: 1px;">
+        <ul id="main-menu" class="nav navbar-nav navbar-right">
+            <li class="dropdown hidden-xs">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> Jack Smith
+                    <i class="fa fa-caret-down"></i>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li><a href="./">My Account</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Admin Panel</li>
+                    <li><a href="./">Users</a></li>
+                    <li><a href="./">Security</a></li>
+                    <li><a tabindex="-1" href="./">Payments</a></li>
+                    <li class="divider"></li>
+                    <li><a tabindex="-1" href="sign-in.html">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>-->
+
+<div th:insert="~{home::leaf-menu}"></div>
+<!--<div class="sidebar-nav">
+    <ul>
+        <li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i class="fa fa-fw fa-dashboard"></i> 首页<i class="fa fa-collapse"></i></a></li>
+        <li><ul class="dashboard-menu nav nav-list collapse in">
+            <li ><a href="/user/home"><span class="fa fa-caret-right"></span> 首页</a> </li>
+            <li ><a href="/user/users"><span class="fa fa-caret-right"></span> 用户列表</a></li>
+            <li><a class="nav-header"><i class="fa fa-fw fa-question-circle"></i> 关于我们</a></li>
+        </ul></li>
+    </ul>
+</div>-->
+
+<div class="content">
+    <div class="header">
+
+        <h1 class="page-title">关于我们</h1>
+        <ul class="breadcrumb">
+            <li><a href="/user/login">登录页面</a> </li>
+            <li class="active">关于我们</li>
+        </ul>
+    </div>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>部门号</th>
+            <th>部门名称</th>
+            <th>部门主管</th>
+            <th>状态</th>
+            <th>操作</th>
+            <th style="width: 2.5em;"></th>
+        </tr>
+        </thead>
+        <tr th:each="department:${page.list}">
+            <td th:text="${department.departmentId}"></td>
+            <td th:text="${department.departmentName}"></td>
+            <td th:text="${department.departmentAdmin}"></td>
+            <td th:text="${department.departmentStatus}"></td>
+            <td><button type="button" id="pbtn"><i class="fa fa-pencil"></i></button>
+                <button type="button"  id="btn"   role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></button></td></tr>
+    </table>
+
+    <div class="modal-footer no-margin-top">
+        <ul class="pagination pull-right no-margin">
+
+            <!-- 首页 -->
+            <li>
+                <a th:href="'/test'" th:if="${page.hasPreviousPage}">首页</a>
+            </li>
+
+            <!-- 上一页 -->
+            <li th:if="${page.hasPreviousPage}">
+                <a th:href="'/test?pageNum=' + ${page.prePage}" th:text="上一页"></a>
+            </li>
+
+            <!-- 中间页 -->
+            <li th:each="pageNum:${#numbers.sequence(1, page.Pages)}">
+                <a th:href="'/test?pageNum=' + ${pageNum}" th:text="${pageNum}" th:if="${pageNum ne page.pageNum}"></a>
+                <a th:href="'/test?pageNum=' + ${pageNum}" th:text="${pageNum}" th:if="${pageNum eq page.pageNum}" th:style="'font-weight:bold;background: #6faed9;'"></a>
+            </li>
+
+            <!-- 下一页 -->
+            <li th:if="${!page.isLastPage}">
+                <a th:href="'/test?pageNum=' + ${page.nextPage}" th:text="下一页"></a>
+            </li>
+
+            <!-- 尾页 -->
+            <li>
+                <a th:href="'/test?pageNum=' + ${page.pages}" th:if="${page.isLastPage}">尾页</a>
+            </li>
+
+        </ul>
+    </div>
+
+</div>
+
+
+</body>
+</html>

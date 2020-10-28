@@ -1,0 +1,272 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head th:replace="layout :: common_head(~{::title},~{},~{})">
+    <title>网鲸企业员工管系统</title>
+</head>
+<body class=" theme-blue">
+
+<style type="text/css">
+    #line-chart {
+        height: 300px;
+        width: 800px;
+        margin: 0px auto;
+        margin-top: 1em;
+    }
+
+    .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover {
+        color: #fff;
+    }
+</style>
+
+<!--[if lt IE 7 ]>
+<body class="ie ie6"> <![endif]-->
+<!--[if IE 7 ]>
+<body class="ie ie7 "> <![endif]-->
+<!--[if IE 8 ]>
+<body class="ie ie8 "> <![endif]-->
+<!--[if IE 9 ]>
+<body class="ie ie9 "> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+
+<!--<![endif]-->
+<!--<div class="navbar navbar-default" role="navigation" th:fragment="top-menu">
+    <a class="" href="index.html"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Whale</span></a>
+    <div class="navbar-collapse collapse" style="height: 1px;">
+        <ul id="main-menu" class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown">更多&nbsp;<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">超清</a></li>
+                    <li><a href="#">超清</a></li>
+                    <li><a href="#">超清</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>-->
+
+<div class="navbar navbar-default" role="navigation" th:fragment="top-menu">
+    <a class="" href="index.html"><span class="navbar-brand"><span class="fa fa-paper-plane"></span> Whale</span></a>
+    <div class="navbar-collapse collapse" style="height: 1px;">
+        <ul id="main-menu" class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"shiro:principal property="staffName"></span>
+                    <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <!-- <li><a href="./">Security</a></li>
+                     <li><a tabindex="-1" href="./">Payments</a></li>-->
+                    <li class="divider"></li>
+                    <li><a tabindex="-1" href="/currentuser">修改个人信息</a></li>
+                    <li class="divider"></li>
+                    <li><a tabindex="-1" href="/logout">退出</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="sidebar-nav" th:fragment="leaf-menu">
+    <ul>
+        <li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i
+                class="fa fa-fw fa-dashboard"></i> 首页<i class="fa fa-collapse"></i></a></li>
+        <li>
+            <ul class="dashboard-menu nav nav-list collapse in">
+                <li><a href="/home"><span class="fa fa-caret-right"></span> 首页</a></li>
+
+                <li><a href="#" data-target=".dashboard-menu1" class="nav-header" data-toggle="collapse"><i
+                        class="fa fa-fw fa-dashboard"></i> 我 的<i class="fa fa-collapse"></i></a></li>
+                <li>
+                <li>
+                    <ul class="dashboard-menu1 nav nav-list collapse in">
+                        <li><a href="/mysalary"><span class="fa fa-caret-right"></span> 我的薪资</a></li>
+                        <li><a href="/leave"><span class="fa fa-caret-right"></span> 请假</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" data-target=".dashboard-menu2" class="nav-header" data-toggle="collapse"><i
+                        class="fa fa-fw fa-dashboard"></i> 员工管理<i class="fa fa-collapse"></i></a></li>
+                <li>
+                <li>
+                    <ul class="dashboard-menu2 nav nav-list collapse in">
+                        <li><a href="/userslist"><span class="fa fa-caret-right"></span> 用户列表 废弃</a></li>
+                        <li><a href="/salarylist"><span class="fa fa-caret-right"></span> 薪资列表</a></li>
+                        <li><a href="/operationleave"><span class="fa fa-caret-right"></span> 请假审批</a></li>
+                        <li><a href="/roleapproval"><span class="fa fa-caret-right"></span> 权限审批</a></li>
+                        <li><a href="#"><span class="fa fa-caret-right"></span> ####</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#" data-target=".dashboard-menu3" class="nav-header" data-toggle="collapse"><i
+                        class="fa fa-fw fa-dashboard"></i> 部门管理<i class="fa fa-collapse"></i></a></li>
+                <li>
+                <li>
+                    <ul class="dashboard-menu3 nav nav-list collapse in">
+                        <li><a href="/stafflist"><span class="fa fa-caret-right"></span> 员工列表</a></li>
+                        <li><a href="/deptlist"><span class="fa fa-caret-right"></span> 部门列表</a></li>
+                    </ul>
+                </li>
+                <li><a href="/about" class="nav-header"><i class="fa fa-fw fa-question-circle"></i> 关于我们</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div class="content">
+    <div class="header">
+        <div class="stats">
+        </div>
+        <h1 class="page-title">首页</h1>
+        <ul class="breadcrumb">
+            <li><a href="/loging">登录界面</a></li>
+            <li class="active">首页</li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="row">
+            <!-- <div class="col-sm-6 col-md-6">
+                 <div class="panel panel-default">
+                     <div class="panel-heading no-collapse">Not Collapsible<span class="label label-warning">+10</span></div>
+                     <table class="table table-bordered table-striped">
+                       <thead>
+                         <tr>
+                           <th>First Name</th>
+                           <th>Last Name</th>
+                           <th>Username</th>
+                         </tr>
+                       </thead>
+                       <tbody>
+                         <tr>
+                           <td>待填写</td>
+                           <td></td>
+                           <td></td>
+                         </tr>
+                         <tr>
+                             <td>待填写</td>
+                             <td></td>
+                             <td></td>
+                         </tr>
+                         <tr>
+                             <td>待填写</td>
+                             <td></td>
+                             <td></td>
+                         </tr>
+                         <tr>
+                             <td>待填写</td>
+                             <td></td>
+                             <td></td>
+                         </tr>
+                         <tr>
+                             <td>待填写</td>
+                             <td></td>
+                             <td></td>
+                         </tr>
+                         <tr>
+                             <td>待填写</td>
+                             <td></td>
+                             <td></td>
+                         </tr>
+                       </tbody>
+                     </table>
+                 </div>
+             </div>-->
+           <!-- <div class="col-sm-6 col-md-6">
+                <div class="panel panel-default">
+                    <a href="#widget1container" class="panel-heading" data-toggle="collapse">当前用户信息 </a>
+                    <div id="widget1container" class="panel-body collapse in">
+                        <h2>currentUser</h2>
+                        <p>username:<a th:text="${session.user.username}"></a></p>
+                        <p>password:<a th:text="${session.user.password}"></a></p>
+                        <p>phone:<a th:text="${session.user.phone}"></a></p>
+                        <p>mail:<a th:text="${session.user.mail}"></a></p>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+        <div class="row">
+            <!--<div class="col-sm-6 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading no-collapse">
+                        <span class="panel-icon pull-right">
+                            <a href="#" class="demo-cancel-click" rel="tooltip" title="Click to refresh"><i class="fa fa-refresh"></i></a>
+                        </span>
+
+                        Needed to Close
+                    </div>
+                    <table class="table list">
+                      <tbody>
+                          <tr>
+                              <td>
+                                  <a href="#"><p class="title">Care Hospital</p></a>
+                                  <p class="info">Sales Rating: 86%</p>
+                              </td>
+                              <td>
+                                  <p>Date: 7/19/2012</p>
+                                  <a href="#">View Transaction</a>
+                              </td>
+                              <td>
+                                  <p class="text-danger h3 pull-right" style="margin-top: 12px;">$20,500</p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  <a href="#"><p class="title">Custom Eyesight</p></a>
+                                  <p class="info">Sales Rating: 58%</p>
+                              </td>
+                              <td>
+                                  <p>Date: 7/19/2012</p>
+                                  <a href="#">View Transaction</a>
+                              </td>
+                              <td>
+                                  <p class="text-danger h3 pull-right" style="margin-top: 12px;">$12,600</p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  <a href="#"><p class="title">Clear Dental</p></a>
+                                  <p class="info">Sales Rating: 76%</p>
+                              </td>
+                              <td>
+                                  <p>Date: 7/19/2012</p>
+                                  <a href="#">View Transaction</a>
+                              </td>
+                              <td>
+                                  <p class="text-danger h3 pull-right" style="margin-top: 12px;">$2,500</p>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td>
+                                  <a href="#"><p class="title">Safe Insurance</p></a>
+                                  <p class="info">Sales Rating: 82%</p>
+                              </td>
+                              <td>
+                                  <p>Date: 7/19/2012</p>
+                                  <a href="#">View Transaction</a>
+                              </td>
+                              <td>
+                                  <p class="text-danger h3 pull-right" style="margin-top: 12px;">$22,400</p>
+                              </td>
+                          </tr>
+
+                      </tbody>
+                    </table>
+                </div>
+            </div>-->
+            <!--<div class="col-sm-6 col-md-6">
+                <div class="panel panel-default">
+                    <a href="#widget2container" class="panel-heading" data-toggle="collapse">Collapsible </a>
+                    <div id="widget2container" class="panel-body collapse in">
+                        <h2>Built with Less</h2>
+                        <p>The CSS is built with Less. There is a compiled version included if you prefer plain CSS.</p>
+                        <p>Fava bean jícama seakale beetroot courgette shallot amaranth pea garbanzo carrot radicchio peanut leek pea sprouts arugula brussels sprout green bean. Spring onion broccoli chicory shallot winter purslane pumpkin gumbo cabbage squash beet greens lettuce celery. Gram zucchini swiss chard mustard burdock radish brussels sprout groundnut. Asparagus horseradish beet greens broccoli brussels.</p>
+                        <p><a class="btn btn-primary">Learn more »</a></p>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>

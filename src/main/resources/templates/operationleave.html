@@ -1,0 +1,84 @@
+<!doctype html>
+<!--<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml">-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: common_head(~{::title},~{},~{::script})">
+    <title>网鲸企业员工管系统</title>
+    <script src="js/leaveapproval.js" type="text/javascript" th:src="@{/js/leaveapproval.js}"></script>
+</head>
+<body class=" theme-blue">
+
+<!-- Demo page code -->
+
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+<div th:insert="~{home::top-menu}"></div>
+
+<div th:insert="~{home::leaf-menu}"></div>
+
+<div class="content">
+    <div class="header">
+
+        <h1 class="page-title">请假审核</h1>
+        <ul class="breadcrumb">
+            <li><a href="/user/login">登录页面</a> </li>
+            <li class="active">请假审核</li>
+        </ul>
+    </div>
+    <div class="panel panel-default">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>单号</th>
+                <th>工号</th>
+                <th>姓名</th>
+                <th>类型</th>
+                <th>事由</th>
+                <th>请假开始时间</th>
+                <th>请假结束时间</th>
+                <th>审批状态</th>
+                <th>操作</th>
+                <th style="width: 2.5em;"></th>
+            </tr>
+            </thead>
+            <tbody id="dept">
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <!-- 分页文字信息 ：拿到控制器处理请求时封装在pageInfo里面的分页信息-->
+        <div class="col-sm-5" id="page_info_area">
+            <div class="dataTables_info" id="dataTableExample_info" style="margin-left: 20px">
+            </div>
+        </div>
+        <div class="col-sm-7">
+            <!-- 分页码 -->
+            <div class="dataTables_paginate paging_simple_numbers" id="dataTableExample_paginate"
+                 style="line-height: 32.4px">
+                <!--1.pageContext.request.contextPath表示当前项目路径，采用的是绝对路径表达方式。一般为http:localhost:8080/项目名 。
+                2.首页，末页的逻辑：pn=1访问第一次，pn=${pageInfo.pages}访问最后一页  -->
+                <!-- 如果还有前页就访问当前页码-1的页面， -->
+                <!--遍历所有导航页码，如果遍历的页码页当前页码相等就高亮显示，如果相等就普通显示  -->
+                <!-- 如果还有后页就访问当前页码+1的页面， -->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript">
+    $("[rel=tooltip]").tooltip();
+    $(function () {
+        $('.demo-cancel-click').click(function () {
+            return false;
+        });
+    });
+</script>
+
+
+</body></html>

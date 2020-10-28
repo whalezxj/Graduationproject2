@@ -1,0 +1,100 @@
+<!doctype html>
+<!--<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml">-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: common_head(~{::title},~{},~{::script})">
+    <title>网鲸企业员工管系统</title>
+    <script src="js/mysalary.js" type="text/javascript" th:src="@{/js/mysalary.js}"></script>
+</head>
+<body class=" theme-blue">
+
+<!-- Demo page code -->
+
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+<div th:insert="~{home::top-menu}"></div>
+
+<div th:insert="~{home::leaf-menu}"></div>
+
+<div class="content">
+    <div class="header">
+
+        <h1 class="page-title">我的薪资</h1>
+        <ul class="breadcrumb">
+            <li><a href="/user/login">登录页面</a> </li>
+            <li class="active">我的薪资</li>
+        </ul>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-6 col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading no-collapse">
+                    <span class="panel-icon pull-right">
+                        <a href="/mysalary" class="demo-cancel-click" rel="tooltip" title="Click to refresh"><i class="fa fa-refresh"></i></a>
+                    </span>
+                    我的信息
+                </div>
+                <table class="table list">
+                  <tbody>
+                      <tr>
+                          <td>
+                              <p class="test-info h3 pull-left" style="margin-top: 12px;margin-left: 50px">工号</p>
+                          </td>
+                          <td>
+                              <p class="text-danger h3 pull-right" style="margin-top: 12px; " id="staffId"></p>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                              <a href="#"><p class="title">交通补贴</p></a>
+                              <p class="info" id="transnational"></p>
+                          </td>
+                          <td>
+                              <a href="#"><p class="title">午餐补贴</p></a>
+                              <p class="info" id="lunch"></p>
+                          </td>
+                          <td>
+                              <a href="#"><p class="title">通信补贴</p></a>
+                              <p class="info" id="communication"></p>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                              <a href="#"><p class="title">工作天数</p></a>
+                              <p class="info" id="workDay"></p>
+                          </td>
+                          <td>
+                              <a href="#"><p class="title">奖金or补贴</p></a>
+                              <p class="info" id="bonus"></p>
+                          </td>
+                          <td>
+                              <a href="#"><p class="title">基本工资</p></a>
+                              <p class="info" id="salaryBase"></p>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                              <p class="test-info h3 pull-left" style="margin-top: 12px;margin-left: 50px">到手</p>
+                          </td>
+                          <td></td>
+                          <td>
+                          <p class="text-danger h3 pull-right" style="margin-top: 12px;" id="salaryTotal">/p>
+                          </td>
+                      </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+</body></html>
